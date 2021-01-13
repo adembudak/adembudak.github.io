@@ -102,46 +102,7 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: cactus
 
-theme_config:
-  #
-  #nav:
-  #  home: /
-  #  about: /about/
-  #  articles: /archives/
-  #  LINK_NAME: URL
-  #
-  #posts_overview:
-  #  show_all_posts: false
-  #  post_count: 12
-  #
-  #copyright:
-  #  start_year: 2021
-  #  end_year: 2022
-  #
-  #rss: atom.xml
-  #
-  #google_analytics:
-  #  enabled: false
-  #  id: 'UA-49627206-1'
-  #
-  #baidu_analytics:
-  #  enabled: false
-  ##  id: 2e6da3c375c8a87f5b664cea6d4cb29c
-  #
-  #cloudflare_analytics:
-  #  enabled: false
-  ##  id: 0dabb6e21848405483a237e6a7b6ed04
-  #
-  #umami_analytics:
-  #  enabled: false
-  ## id: 0dabb6e21848405483a237e6a7b6ed04
-  ## host: https://analytics.domain.com
-  #
-  #highlight: ATELIER_DUNE_DARK
-  #
-#Deployment
-## Docs: https://hexo.io/docs/one-command-deployment
-deploy:
-  type: git
-  repo: https://github.com/adembudak/adembudak.github.io
-  branch: gh-pages
+# deploy:
+#  type: git
+#  repo: https://github.com/adembudak/adembudak.github.io
+#  branch: gh-pages
