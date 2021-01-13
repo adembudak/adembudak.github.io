@@ -1,15 +1,15 @@
 ### Personal website and blog
 
-Sources for my personal website and blog. Generated using
-[hexo](https://hexo.io/), used
+Sources of my personal website. Generated using [hexo](https://hexo.io/), used
 [cactus](https://github.com/probberechts/hexo-theme-cactus) theme.
 
-#### Build
+#### Run on local
 
 ```bash
 npm install hexo-cli -g 
-git clone --recursive https://github.com/adembudak/adembudak.github.io
+git clone --depth 1 https://github.com/adembudak/adembudak.github.io
 cd adembudak.github.io
+git clone --depth 1 https://github.com/probberechts/hexo-theme-cactus themes/cactus
 hexo serve
 ```
 
