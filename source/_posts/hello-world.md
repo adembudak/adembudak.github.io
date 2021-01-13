@@ -2,39 +2,30 @@
 title: Hello World
 ---
 
-Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
+I don't know what is left say about the hello world. I just want to
+point out it's test program. If you can make it work, then you have a display,
+a keyboard, an editor, a compiler, linker, loader, runtime... all the stack,
+and they're all working.
 
-## Quick Start
+Here is the hello world in C++:
+```c++
+#include <iostream>
 
-### Create a new post
-
-``` bash
-$ hexo new "My New Post"
+int main() { 
+  std::cout << "hello world\n";
+}
 ```
+This program uses a library (iostream) and a core feature (function).  It's like the base condition on mathematical induction. If it works, other core and library features on that specific compiler will work too.
 
-More info: [Writing](https://hexo.io/docs/writing.html)
+I remember, I couldn't make this work for a couple of days though. Because I couldn't locate double quote `"` around the character string on the keyboard but instead type two single quote `''` :facepalm:. When I copy paste from the lecture notes to [Dev-Cpp](https://github.com/Embarcadero/Dev-Cpp/releases/tag/v6.2), it encoded in a weird way.
 
-### Run server
+Anyway, just want to tell this, hello world is a test program. It's sublime, simple, as simple as possible and  beautiful one. 
 
-``` bash
-$ hexo server
-```
+This is the first post on my new blog. I occasionally open blog, then get "introverted", and close all of the appearances on the web. Hope this one last longer. Thanks for reading.
 
-More info: [Server](https://hexo.io/docs/server.html)
+----
 
-### Generate static files
+Additional reading:
 
-``` bash
-$ hexo generate
-```
+- [Hello, world: Deep analysis of a shallow program.](https://gist.github.com/lava/f8732a6802988fe8d0a41bd7979a4d54)
 
-More info: [Generating](https://hexo.io/docs/generating.html)
-
-### Deploy to remote sites
-
-``` bash
-$ hexo deploy
-```
-
-More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
----
