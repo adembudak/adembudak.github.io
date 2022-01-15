@@ -8,13 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="description" content="Inline namespace can be used for versioning API without annoying users: namespace pokemon &amp;#123;  std::string choose() noexcept &amp;#123; return &quot;Pichu&quot;; &amp;#125;&amp;#125; std::cout &lt;&lt; pokemon">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1 min read: inline namespaces">
-<meta property="og:url" content="https://syntaxonly.github.io/1-min-read-inline-namespaces/">
+<meta property="og:title" content="inline namespaces">
+<meta property="og:url" content="https://syntaxonly.github.io/inline-namespaces/">
 <meta property="og:site_name">
 <meta property="og:description" content="Inline namespace can be used for versioning API without annoying users: namespace pokemon &amp;#123;  std::string choose() noexcept &amp;#123; return &quot;Pichu&quot;; &amp;#125;&amp;#125; std::cout &lt;&lt; pokemon">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-15T00:26:52.000Z">
-<meta property="article:modified_time" content="2022-01-15T00:33:12.138Z">
+<meta property="article:modified_time" content="2022-01-15T16:21:35.745Z">
 <meta name="twitter:card" content="summary">
     
     
@@ -35,7 +35,7 @@
       
     
     <!-- title -->
-    <title>1 min read: inline namespaces</title>
+    <title>inline namespaces</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -66,6 +66,8 @@
        --><li><a href="http://github.com/syntaxonly/">Github</a></li><!--
      --><!--
        --><li><a href="https://stackoverflow.com/users/17359942/syntaxonly/">Stack Overflow</a></li><!--
+     --><!--
+       --><li><a href="https://twitter.com/adembudak_/">Twitter</a></li><!--
      -->
       </ul>
     </span>
@@ -74,7 +76,7 @@
       <ul>
         
         
-        <li><a class="icon" aria-label="Next post" href="/1-min-read-unnamed-namespaces/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Next post" href="/unnamed-namespaces/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -87,17 +89,17 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://syntaxonly.github.io/1-min-read-inline-namespaces/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://syntaxonly.github.io/1-min-read-inline-namespaces/&text=1 min read: inline namespaces"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://syntaxonly.github.io/1-min-read-inline-namespaces/&title=1 min read: inline namespaces"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://syntaxonly.github.io/1-min-read-inline-namespaces/&is_video=false&description=1 min read: inline namespaces"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=1 min read: inline namespaces&body=Check out this article: https://syntaxonly.github.io/1-min-read-inline-namespaces/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://syntaxonly.github.io/1-min-read-inline-namespaces/&title=1 min read: inline namespaces"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://syntaxonly.github.io/1-min-read-inline-namespaces/&title=1 min read: inline namespaces"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://syntaxonly.github.io/1-min-read-inline-namespaces/&title=1 min read: inline namespaces"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://syntaxonly.github.io/1-min-read-inline-namespaces/&title=1 min read: inline namespaces"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://syntaxonly.github.io/1-min-read-inline-namespaces/&name=1 min read: inline namespaces&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://syntaxonly.github.io/1-min-read-inline-namespaces/&t=1 min read: inline namespaces"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://syntaxonly.github.io/inline-namespaces/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://syntaxonly.github.io/inline-namespaces/&text=inline namespaces"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://syntaxonly.github.io/inline-namespaces/&title=inline namespaces"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://syntaxonly.github.io/inline-namespaces/&is_video=false&description=inline namespaces"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=inline namespaces&body=Check out this article: https://syntaxonly.github.io/inline-namespaces/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://syntaxonly.github.io/inline-namespaces/&title=inline namespaces"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://syntaxonly.github.io/inline-namespaces/&title=inline namespaces"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://syntaxonly.github.io/inline-namespaces/&title=inline namespaces"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://syntaxonly.github.io/inline-namespaces/&title=inline namespaces"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://syntaxonly.github.io/inline-namespaces/&name=inline namespaces&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://syntaxonly.github.io/inline-namespaces/&t=inline namespaces"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -114,7 +116,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        1 min read: inline namespaces
+        inline namespaces
     </h1>
 
 
@@ -172,6 +174,8 @@
           <li><a href="http://github.com/syntaxonly/">Github</a></li>
          
           <li><a href="https://stackoverflow.com/users/17359942/syntaxonly/">Stack Overflow</a></li>
+         
+          <li><a href="https://twitter.com/adembudak_/">Twitter</a></li>
         
       </ul>
     </div>
@@ -182,17 +186,17 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://syntaxonly.github.io/1-min-read-inline-namespaces/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://syntaxonly.github.io/1-min-read-inline-namespaces/&text=1 min read: inline namespaces"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://syntaxonly.github.io/1-min-read-inline-namespaces/&title=1 min read: inline namespaces"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://syntaxonly.github.io/1-min-read-inline-namespaces/&is_video=false&description=1 min read: inline namespaces"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=1 min read: inline namespaces&body=Check out this article: https://syntaxonly.github.io/1-min-read-inline-namespaces/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://syntaxonly.github.io/1-min-read-inline-namespaces/&title=1 min read: inline namespaces"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://syntaxonly.github.io/1-min-read-inline-namespaces/&title=1 min read: inline namespaces"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://syntaxonly.github.io/1-min-read-inline-namespaces/&title=1 min read: inline namespaces"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://syntaxonly.github.io/1-min-read-inline-namespaces/&title=1 min read: inline namespaces"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://syntaxonly.github.io/1-min-read-inline-namespaces/&name=1 min read: inline namespaces&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://syntaxonly.github.io/1-min-read-inline-namespaces/&t=1 min read: inline namespaces"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://syntaxonly.github.io/inline-namespaces/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://syntaxonly.github.io/inline-namespaces/&text=inline namespaces"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://syntaxonly.github.io/inline-namespaces/&title=inline namespaces"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://syntaxonly.github.io/inline-namespaces/&is_video=false&description=inline namespaces"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=inline namespaces&body=Check out this article: https://syntaxonly.github.io/inline-namespaces/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://syntaxonly.github.io/inline-namespaces/&title=inline namespaces"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://syntaxonly.github.io/inline-namespaces/&title=inline namespaces"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://syntaxonly.github.io/inline-namespaces/&title=inline namespaces"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://syntaxonly.github.io/inline-namespaces/&title=inline namespaces"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://syntaxonly.github.io/inline-namespaces/&name=inline namespaces&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://syntaxonly.github.io/inline-namespaces/&t=inline namespaces"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -225,6 +229,8 @@
        --><li><a href="http://github.com/syntaxonly/">Github</a></li><!--
      --><!--
        --><li><a href="https://stackoverflow.com/users/17359942/syntaxonly/">Stack Overflow</a></li><!--
+     --><!--
+       --><li><a href="https://twitter.com/adembudak_/">Twitter</a></li><!--
      -->
       </ul>
     </nav>
