@@ -14,7 +14,7 @@
 <meta property="og:description" content="Unnamed (or anonymous) namespaces can be used for the functions appear only in file scope: &#x2F;&#x2F; sort_test.cppnamespace &amp;#123;std::mt19937 gen&amp;#123;std::random_device&amp;#123;&amp;#125;()&amp;#125;;using interval &#x3D;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-13T23:33:08.000Z">
-<meta property="article:modified_time" content="2022-01-13T23:48:01.222Z">
+<meta property="article:modified_time" content="2022-01-15T00:33:26.970Z">
 <meta name="twitter:card" content="summary">
     
     
@@ -73,6 +73,8 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" aria-label="Previous post" href="/1-min-read-inline-namespaces/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
         
         <li><a class="icon" aria-label="Next post" href="/hello-world/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
@@ -102,7 +104,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#links"><span class="toc-number">1.</span> <span class="toc-text">links:</span></a></li></ol>
+      
     </div>
   </span>
 </div>
@@ -144,7 +146,8 @@
     <p>Unnamed (or anonymous) namespaces can be used for the functions appear only in file scope:</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// sort_test.cpp</span></span><br><span class="line"><span class="keyword">namespace</span> &#123;</span><br><span class="line"></span><br><span class="line">std::mt19937 gen&#123;std::random_device&#123;&#125;()&#125;;</span><br><span class="line"><span class="keyword">using</span> interval = std::uniform_int_distribution&lt;&gt;::param_type;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">int_distrib_t</span> = std::uniform_int_distribution&lt;<span class="keyword">int</span>&gt;;</span><br><span class="line"><span class="keyword">int_distrib_t</span> int_distrib;</span><br><span class="line"></span><br><span class="line"><span class="function">std::<span class="keyword">uint8_t</span> <span class="title">randomByte</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> <span class="built_in">int_distrib</span>(gen, interval&#123;<span class="number">0</span>, <span class="number">255</span>&#125;); &#125;</span><br><span class="line"><span class="function">std::<span class="keyword">uint16_t</span> <span class="title">randomWord</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> <span class="built_in">int_distrib</span>(gen, interval&#123;<span class="number">0</span>, <span class="number">65535</span>&#125;); &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">TEST_CASE</span>(<span class="string">&quot;Sort impl. correctness&quot;</span>) &#123;</span><br><span class="line">  <span class="function">std::vector&lt;std::<span class="keyword">uint8_t</span>&gt; <span class="title">base</span><span class="params">(<span class="number">1&#x27;000</span>)</span></span>;</span><br><span class="line">  std::<span class="built_in">generate</span>(<span class="built_in">begin</span>(base), <span class="built_in">end</span>(base), []() &#123; <span class="keyword">return</span> <span class="built_in">randomByte</span>(); &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">auto</span> test = base;</span><br><span class="line">  std::<span class="built_in">sort</span>(<span class="built_in">begin</span>(expected), <span class="built_in">end</span>(expected));</span><br><span class="line"></span><br><span class="line">  <span class="keyword">auto</span> expected = base;</span><br><span class="line">  mine::<span class="built_in">sort</span>(<span class="built_in">begin</span>(test), <span class="built_in">end</span>(test));</span><br><span class="line"></span><br><span class="line">  <span class="built_in">EXPECT_EQ</span>(test == expected);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h5 id="links"><a href="#links" class="headerlink" title="links:"></a>links:</h5><ul>
+<p>more on:</p>
+<ul>
 <li><a href="https://en.cppreference.com/w/cpp/language/namespace#Unnamed_namespaces">https://en.cppreference.com/w/cpp/language/namespace#Unnamed_namespaces</a></li>
 </ul>
 
@@ -170,7 +173,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#links"><span class="toc-number">1.</span> <span class="toc-text">links:</span></a></li></ol>
+      
     </div>
 
     <div id="share-footer" style="display: none">
