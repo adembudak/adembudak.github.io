@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="There are several ways to construct a std::vector. One of them is by passing 2 input iterators on it: template &lt;class InputIt&gt;constexpr vector(InputIt first, InputIt last, const Allocator &amp;a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="std::vector iterator ctor">
+<meta property="og:url" content="https://syntaxonly.github.io/vector-iterator-ctor/">
+<meta property="og:site_name">
+<meta property="og:description" content="There are several ways to construct a std::vector. One of them is by passing 2 input iterators on it: template &lt;class InputIt&gt;constexpr vector(InputIt first, InputIt last, const Allocator &amp;a">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-01-18T13:13:40.000Z">
+<meta property="article:modified_time" content="2022-01-18T13:39:44.468Z">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>std::vector iterator ctor</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/true" title="" type="application/atom+xml" />
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="http://github.com/syntaxonly/">Github</a></li><!--
+     --><!--
+       --><li><a href="https://stackoverflow.com/users/17359942/syntaxonly/">Stack Overflow</a></li><!--
+     --><!--
+       --><li><a href="https://twitter.com/adembudak_/">Twitter</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/inline-namespaces/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://syntaxonly.github.io/vector-iterator-ctor/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://syntaxonly.github.io/vector-iterator-ctor/&text=std::vector iterator ctor"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://syntaxonly.github.io/vector-iterator-ctor/&title=std::vector iterator ctor"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://syntaxonly.github.io/vector-iterator-ctor/&is_video=false&description=std::vector iterator ctor"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=std::vector iterator ctor&body=Check out this article: https://syntaxonly.github.io/vector-iterator-ctor/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://syntaxonly.github.io/vector-iterator-ctor/&title=std::vector iterator ctor"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://syntaxonly.github.io/vector-iterator-ctor/&title=std::vector iterator ctor"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://syntaxonly.github.io/vector-iterator-ctor/&title=std::vector iterator ctor"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://syntaxonly.github.io/vector-iterator-ctor/&title=std::vector iterator ctor"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://syntaxonly.github.io/vector-iterator-ctor/&name=std::vector iterator ctor&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://syntaxonly.github.io/vector-iterator-ctor/&t=std::vector iterator ctor"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        std::vector iterator ctor
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name"></span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-01-18T13:13:40.000Z" itemprop="datePublished">18/1/22</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>There are <a href="https://en.cppreference.com/w/cpp/container/vector/vector">several ways</a> to construct a <a href="https://en.cppreference.com/w/cpp/container/vector"><code>std::vector</code></a>. One of them is by passing 2 input iterators on it:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">InputIt</span>&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">constexpr</span> <span class="title">vector</span><span class="params">(InputIt first, InputIt last, <span class="keyword">const</span> Allocator &amp;alloc = Allocator())</span></span>; <span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="keyword">class</span> <span class="title">tokenType</span> &#123;</span> <span class="comment">/* ... */</span> &#125;;</span><br><span class="line"></span><br><span class="line">std::map&lt;std::string, tokenType&gt; keywords &#123;</span><br><span class="line">    &#123;<span class="string">&quot;else&quot;</span>, tokenType::ELSE&#125;, </span><br><span class="line">    &#123;<span class="string">&quot;if&quot;</span>, tokenType::IF&#125;, </span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">std::vector&lt;std::pair&lt;std::string, tokenType&gt;&gt; <span class="built_in">kv</span>(keywords.<span class="built_in">begin</span>(), keywords.<span class="built_in">end</span>());</span><br></pre></td></tr></table></figure>
+<p><a href="https://en.cppreference.com/w/cpp/language/class_template_argument_deduction">CTAD</a> allows us to drop type parameter with C++17 and onward:</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">std::vector <span class="title">kv</span><span class="params">(keywords.begin(), keywords.end())</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>Another use case is reading from a file:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ more weather-forecast.dat</span><br><span class="line"></span><br><span class="line">29.0078352897646</span><br><span class="line">38.3680151369284</span><br><span class="line">25.7318773688196</span><br><span class="line">30.7462548296841</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>We can directly read it into the vector with <a href="https://en.cppreference.com/w/cpp/iterator/istream_iterator"><code>istream_iterator</code></a>s:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::ifstream fin&#123;<span class="string">&quot;weather-forecast.dat&quot;</span>&#125;;</span><br><span class="line"></span><br><span class="line">std::istream_iterator&lt;<span class="keyword">double</span>&gt; begin&#123;fin&#125;;</span><br><span class="line">std::istream_iterator&lt;<span class="keyword">double</span>&gt; end&#123;&#125;; <span class="comment">// &lt;-</span></span><br><span class="line"></span><br><span class="line"><span class="function">std::vector&lt;<span class="keyword">double</span>&gt; <span class="title">weatherStats</span><span class="params">(begin, end)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> average = std::<span class="built_in">accumulate</span>(weatherStats.<span class="built_in">begin</span>(), weatherStats.<span class="built_in">end</span>(), <span class="built_in"><span class="keyword">double</span></span>(<span class="number">0</span>)) / weatherStats.<span class="built_in">size</span>();</span><br></pre></td></tr></table></figure>
+<p>The default initialized <code>istream_iterator</code> will behave like the end iterator so we can define it in place:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">std::vector&lt;<span class="keyword">double</span>&gt; <span class="title">weatherStats</span><span class="params">(std::istream_iterator&lt;<span class="keyword">double</span>&gt;&#123;fin&#125;, &#123;&#125;)</span></span>;</span><br><span class="line"><span class="keyword">auto</span> average = std::<span class="built_in">accumulate</span>(<span class="built_in">begin</span>(weatherStats), <span class="built_in">end</span>(weatherStats), <span class="built_in"><span class="keyword">double</span></span>(<span class="number">0</span>)) / <span class="built_in">size</span>(weatherStats);</span><br></pre></td></tr></table></figure>
+<p>and this is a pattern. To read from a file string by string:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">std::vector&lt;std::string&gt; <span class="title">weatherStats</span><span class="params">(std::istream_iterator&lt;std::string&gt;&#123;fin&#125;, &#123;&#125;)</span></span>; <span class="comment">// &#123;&quot;to&quot;, &quot;be&quot;, &quot;or&quot; .. &#125;</span></span><br></pre></td></tr></table></figure>
+<p>or you’re writing an interpreter and need to store the source file. <code>istream_iterator</code> will skip the white space by default but <a href="https://en.cppreference.com/w/cpp/io/manip/skipws"><code>noskipws</code></a> can be used:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">std::vector&lt;<span class="keyword">char</span>&gt; <span class="title">source</span><span class="params">(std::istream_iterator&lt;<span class="keyword">char</span>&gt;(fin &gt;&gt; std::noskipws), &#123;&#125;)</span></span>;  <span class="comment">// &#123;&#x27;u&#x27;, &#x27;8&#x27;, &#x27; &#x27;, &#x27;=&#x27;, &#x27; &#x27;, &#x27;3&#x27;, &#x27;\n&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>or you’re writing an emulator and need to keep the game binary. <a href="https://en.cppreference.com/w/cpp/iterator/istreambuf_iterator"><code>istreambuf_iterator</code></a> can be used:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">std::vector&lt;<span class="keyword">char</span>&gt; <span class="title">rom</span><span class="params">(std::istreambuf_iterator&lt;<span class="keyword">char</span>&gt;(fin), &#123;&#125;)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p><em>C</em> style arrays are decay back to pointer and can be used as an iterator:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> fibo[] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>&#125;;</span><br><span class="line"><span class="function">std::vector&lt;<span class="keyword">int</span>&gt; <span class="title">fibo_vec</span><span class="params">(fibo, fibo + std::size(fibo))</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function">std::vector&lt;std::string_view&gt; <span class="title">args</span><span class="params">(argv, argv + argc)</span></span>;</span><br></pre></td></tr></table></figure>
+<p><code>std::vector</code> has 9 other constructors each waiting to discover. Thanks for reading.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="http://github.com/syntaxonly/">Github</a></li>
+         
+          <li><a href="https://stackoverflow.com/users/17359942/syntaxonly/">Stack Overflow</a></li>
+         
+          <li><a href="https://twitter.com/adembudak_/">Twitter</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://syntaxonly.github.io/vector-iterator-ctor/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://syntaxonly.github.io/vector-iterator-ctor/&text=std::vector iterator ctor"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://syntaxonly.github.io/vector-iterator-ctor/&title=std::vector iterator ctor"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://syntaxonly.github.io/vector-iterator-ctor/&is_video=false&description=std::vector iterator ctor"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=std::vector iterator ctor&body=Check out this article: https://syntaxonly.github.io/vector-iterator-ctor/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://syntaxonly.github.io/vector-iterator-ctor/&title=std::vector iterator ctor"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://syntaxonly.github.io/vector-iterator-ctor/&title=std::vector iterator ctor"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://syntaxonly.github.io/vector-iterator-ctor/&title=std::vector iterator ctor"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://syntaxonly.github.io/vector-iterator-ctor/&title=std::vector iterator ctor"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://syntaxonly.github.io/vector-iterator-ctor/&name=std::vector iterator ctor&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://syntaxonly.github.io/vector-iterator-ctor/&t=std::vector iterator ctor"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022
+    
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="http://github.com/syntaxonly/">Github</a></li><!--
+     --><!--
+       --><li><a href="https://stackoverflow.com/users/17359942/syntaxonly/">Stack Overflow</a></li><!--
+     --><!--
+       --><li><a href="https://twitter.com/adembudak_/">Twitter</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

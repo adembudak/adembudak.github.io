@@ -14,7 +14,7 @@
 <meta property="og:description" content="Inline namespace can be used for versioning API without annoying users: namespace pokemon &amp;#123;  std::string choose() noexcept &amp;#123; return &quot;Pichu&quot;; &amp;#125;&amp;#125; std::cout &lt;&lt; pokemon">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-15T00:26:52.000Z">
-<meta property="article:modified_time" content="2022-01-15T16:21:35.745Z">
+<meta property="article:modified_time" content="2022-01-16T23:20:01.662Z">
 <meta name="twitter:card" content="summary">
     
     
@@ -74,6 +74,8 @@
     <br/>
     <span id="actions">
       <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/vector-iterator-ctor/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
         <li><a class="icon" aria-label="Next post" href="/unnamed-namespaces/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
@@ -146,7 +148,7 @@
     <p>Inline namespace can be used for versioning API without annoying users:</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">namespace</span> pokemon &#123;</span><br><span class="line">  <span class="function">std::string <span class="title">choose</span><span class="params">()</span> <span class="keyword">noexcept</span> </span>&#123; <span class="keyword">return</span> <span class="string">&quot;Pichu&quot;</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::cout &lt;&lt; pokemon::<span class="built_in">choose</span>(); <span class="comment">// Pichu </span></span><br></pre></td></tr></table></figure>
-<p>The lovely <a href="https://en.wikipedia.org/wiki/Pichu">Pichu</a> is evolved into the <a href="https://en.wikipedia.org/wiki/Pikachu">Pikachu</a>. To choose it, we versioned the API and put the old function in <code>namespace v0</code>, then put the updated on in <code>inline namespace v1</code>:</p>
+<p>The lovely <a href="https://en.wikipedia.org/wiki/Pichu">Pichu</a> is evolved into the <a href="https://en.wikipedia.org/wiki/Pikachu">Pikachu</a>. To choose it, we versioned the API and put the old function in <code>namespace v0</code>, then put the updated in <code>inline namespace v1</code>:</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">namespace</span> pokemon &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> v0 &#123;</span><br><span class="line">  [[deprecated]] <span class="function">std::string <span class="title">choose</span><span class="params">()</span> <span class="keyword">noexcept</span> </span>&#123; <span class="keyword">return</span> <span class="string">&quot;Pichu&quot;</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">namespace</span> v1 &#123;</span><br><span class="line">  <span class="function">std::string <span class="title">choose</span><span class="params">()</span> <span class="keyword">noexcept</span> </span>&#123; <span class="keyword">return</span> <span class="string">&quot;Pikachu&quot;</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Now the same call will result updated behaviour:</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::cout &lt;&lt; pokemon::<span class="built_in">choose</span>(); <span class="comment">// Pikachu</span></span><br></pre></td></tr></table></figure>
