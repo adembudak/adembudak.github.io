@@ -9,7 +9,7 @@
     <meta name="description" content="There are several ways to construct a std::vector. One of them is by passing 2 input iterators on it: template &lt;class InputIt&gt;constexpr vector(InputIt first, InputIt last, const Allocator &amp;a">
 <meta property="og:type" content="article">
 <meta property="og:title" content="std::vector&#39;s iterator ctor">
-<meta property="og:url" content="https://syntaxonly.github.io/vector-iterator-ctor/">
+<meta property="og:url" content="https://adembudak.github.io/vector-iterator-ctor/">
 <meta property="og:site_name">
 <meta property="og:description" content="There are several ways to construct a std::vector. One of them is by passing 2 input iterators on it: template &lt;class InputIt&gt;constexpr vector(InputIt first, InputIt last, const Allocator &amp;a">
 <meta property="og:locale" content="en_US">
@@ -63,9 +63,9 @@
         <!--
        --><li><a href="/">Home</a></li><!--
      --><!--
-       --><li><a href="http://github.com/syntaxonly/">Github</a></li><!--
+       --><li><a href="http://github.com/adembudak/">Github</a></li><!--
      --><!--
-       --><li><a href="https://stackoverflow.com/users/17359942/syntaxonly/">Stack Overflow</a></li><!--
+       --><li><a href="https://stackoverflow.com/users/17359942/">Stack Overflow</a></li><!--
      --><!--
        --><li><a href="https://twitter.com/adembudak_/">Twitter</a></li><!--
      -->
@@ -89,17 +89,17 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://syntaxonly.github.io/vector-iterator-ctor/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://syntaxonly.github.io/vector-iterator-ctor/&text=std::vector&#39;s iterator ctor"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://syntaxonly.github.io/vector-iterator-ctor/&title=std::vector&#39;s iterator ctor"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://syntaxonly.github.io/vector-iterator-ctor/&is_video=false&description=std::vector&#39;s iterator ctor"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=std::vector&#39;s iterator ctor&body=Check out this article: https://syntaxonly.github.io/vector-iterator-ctor/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://syntaxonly.github.io/vector-iterator-ctor/&title=std::vector&#39;s iterator ctor"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://syntaxonly.github.io/vector-iterator-ctor/&title=std::vector&#39;s iterator ctor"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://syntaxonly.github.io/vector-iterator-ctor/&title=std::vector&#39;s iterator ctor"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://syntaxonly.github.io/vector-iterator-ctor/&title=std::vector&#39;s iterator ctor"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://syntaxonly.github.io/vector-iterator-ctor/&name=std::vector&#39;s iterator ctor&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://syntaxonly.github.io/vector-iterator-ctor/&t=std::vector&#39;s iterator ctor"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://adembudak.github.io/vector-iterator-ctor/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://adembudak.github.io/vector-iterator-ctor/&text=std::vector&#39;s iterator ctor"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://adembudak.github.io/vector-iterator-ctor/&title=std::vector&#39;s iterator ctor"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://adembudak.github.io/vector-iterator-ctor/&is_video=false&description=std::vector&#39;s iterator ctor"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=std::vector&#39;s iterator ctor&body=Check out this article: https://adembudak.github.io/vector-iterator-ctor/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://adembudak.github.io/vector-iterator-ctor/&title=std::vector&#39;s iterator ctor"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://adembudak.github.io/vector-iterator-ctor/&title=std::vector&#39;s iterator ctor"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://adembudak.github.io/vector-iterator-ctor/&title=std::vector&#39;s iterator ctor"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://adembudak.github.io/vector-iterator-ctor/&title=std::vector&#39;s iterator ctor"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://adembudak.github.io/vector-iterator-ctor/&name=std::vector&#39;s iterator ctor&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://adembudak.github.io/vector-iterator-ctor/&t=std::vector&#39;s iterator ctor"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -184,9 +184,9 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="http://github.com/syntaxonly/">Github</a></li>
+          <li><a href="http://github.com/adembudak/">Github</a></li>
          
-          <li><a href="https://stackoverflow.com/users/17359942/syntaxonly/">Stack Overflow</a></li>
+          <li><a href="https://stackoverflow.com/users/17359942/">Stack Overflow</a></li>
          
           <li><a href="https://twitter.com/adembudak_/">Twitter</a></li>
         
@@ -199,17 +199,17 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://syntaxonly.github.io/vector-iterator-ctor/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://syntaxonly.github.io/vector-iterator-ctor/&text=std::vector&#39;s iterator ctor"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://syntaxonly.github.io/vector-iterator-ctor/&title=std::vector&#39;s iterator ctor"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://syntaxonly.github.io/vector-iterator-ctor/&is_video=false&description=std::vector&#39;s iterator ctor"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=std::vector&#39;s iterator ctor&body=Check out this article: https://syntaxonly.github.io/vector-iterator-ctor/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://syntaxonly.github.io/vector-iterator-ctor/&title=std::vector&#39;s iterator ctor"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://syntaxonly.github.io/vector-iterator-ctor/&title=std::vector&#39;s iterator ctor"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://syntaxonly.github.io/vector-iterator-ctor/&title=std::vector&#39;s iterator ctor"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://syntaxonly.github.io/vector-iterator-ctor/&title=std::vector&#39;s iterator ctor"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://syntaxonly.github.io/vector-iterator-ctor/&name=std::vector&#39;s iterator ctor&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://syntaxonly.github.io/vector-iterator-ctor/&t=std::vector&#39;s iterator ctor"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://adembudak.github.io/vector-iterator-ctor/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://adembudak.github.io/vector-iterator-ctor/&text=std::vector&#39;s iterator ctor"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://adembudak.github.io/vector-iterator-ctor/&title=std::vector&#39;s iterator ctor"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://adembudak.github.io/vector-iterator-ctor/&is_video=false&description=std::vector&#39;s iterator ctor"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=std::vector&#39;s iterator ctor&body=Check out this article: https://adembudak.github.io/vector-iterator-ctor/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://adembudak.github.io/vector-iterator-ctor/&title=std::vector&#39;s iterator ctor"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://adembudak.github.io/vector-iterator-ctor/&title=std::vector&#39;s iterator ctor"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://adembudak.github.io/vector-iterator-ctor/&title=std::vector&#39;s iterator ctor"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://adembudak.github.io/vector-iterator-ctor/&title=std::vector&#39;s iterator ctor"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://adembudak.github.io/vector-iterator-ctor/&name=std::vector&#39;s iterator ctor&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://adembudak.github.io/vector-iterator-ctor/&t=std::vector&#39;s iterator ctor"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -239,9 +239,9 @@
         <!--
        --><li><a href="/">Home</a></li><!--
      --><!--
-       --><li><a href="http://github.com/syntaxonly/">Github</a></li><!--
+       --><li><a href="http://github.com/adembudak/">Github</a></li><!--
      --><!--
-       --><li><a href="https://stackoverflow.com/users/17359942/syntaxonly/">Stack Overflow</a></li><!--
+       --><li><a href="https://stackoverflow.com/users/17359942/">Stack Overflow</a></li><!--
      --><!--
        --><li><a href="https://twitter.com/adembudak_/">Twitter</a></li><!--
      -->
