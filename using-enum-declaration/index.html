@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="2 is a big number in programming. When something repeat more than one time in the code, I tend to pack them in a function, member function or lambda depend of the contex. using enum declaration added">
+    <meta name="description" content="2 is a big number in programming. When something repeat more than one time in the code, I tend to pack them in a function, member function or lambda, depend of the context. using enum declaration adde">
 <meta property="og:type" content="article">
 <meta property="og:title" content="using enum declaration">
 <meta property="og:url" content="https://adembudak.github.io/using-enum-declaration/">
 <meta property="og:site_name">
-<meta property="og:description" content="2 is a big number in programming. When something repeat more than one time in the code, I tend to pack them in a function, member function or lambda depend of the contex. using enum declaration added">
+<meta property="og:description" content="2 is a big number in programming. When something repeat more than one time in the code, I tend to pack them in a function, member function or lambda, depend of the context. using enum declaration adde">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-02-02T23:49:33.000Z">
-<meta property="article:modified_time" content="2022-02-03T12:45:35.876Z">
+<meta property="article:modified_time" content="2022-02-06T20:08:34.011Z">
 <meta name="twitter:card" content="summary">
     
     
@@ -143,7 +143,7 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>2 is a big number in programming. When something repeat more than one time in the code, I tend to pack them in a function, member function or lambda depend of the contex.</p>
+    <p>2 is a big number in programming. When something repeat more than one time in the code, I tend to pack them in a function, member function or lambda, depend of the context.</p>
 <p><code>using enum</code> declaration added by <a href="https://en.cppreference.com/w/cpp/20"><em>C++20</em></a> and allows us to avoid qualifying enum type when reaching enumerators. With it, instead of:</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">Expr <span class="title">Parser::comparison</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  Expr expr = <span class="built_in">term</span>();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (<span class="built_in">match</span>(&#123;TokenKind::GREATER, TokenKind::GREATER_EQUAL, TokenKind::LESS, TokenKind::LESS_EQUAL&#125;)) &#123;</span><br><span class="line">    Token op = <span class="built_in">previous</span>();</span><br><span class="line">    Expr right = <span class="built_in">term</span>();</span><br><span class="line">    expr = <span class="built_in">BinaryExpr</span>(expr, op, right);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> expr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>we can write:</p>
