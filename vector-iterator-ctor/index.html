@@ -14,7 +14,7 @@
 <meta property="og:description" content="There are several ways to construct a std::vector. One of them is by passing 2 input iterators on it: template &lt;class InputIt&gt;constexpr vector(InputIt first, InputIt last, const Allocator &amp;a">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-18T13:13:40.000Z">
-<meta property="article:modified_time" content="2022-02-13T12:50:00.480Z">
+<meta property="article:modified_time" content="2022-04-19T18:20:32.033Z">
 <meta name="twitter:card" content="summary">
     
     
@@ -49,7 +49,7 @@
     
 	<!-- mathjax -->
 	
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
@@ -161,10 +161,10 @@
 <p>and this is a pattern. To read from a file string by string:</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">std::vector&lt;std::string&gt; <span class="title">words</span><span class="params">(std::istream_iterator&lt;std::string&gt;&#123;fin&#125;, &#123;&#125;)</span></span>; <span class="comment">// &#123;&quot;to&quot;, &quot;be&quot;, &quot;or&quot; .. &#125;</span></span><br></pre></td></tr></table></figure>
 <p>or you’re writing an interpreter and need to store the source file, <code>istream_iterator</code> will skip the white space. <a href="https://en.cppreference.com/w/cpp/io/manip/skipws"><code>noskipws</code></a> flag can alter this behaviour:</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">std::vector&lt;<span class="keyword">char</span>&gt; <span class="title">source</span><span class="params">(std::istream_iterator&lt;<span class="keyword">char</span>&gt;(fin &gt;&gt; std::noskipws), &#123;&#125;)</span></span>;  <span class="comment">// &#123;&#x27;u&#x27;, &#x27;8&#x27;, &#x27; &#x27;, &#x27;=&#x27;, &#x27; &#x27;, &#x27;3&#x27;, &#x27;\n&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">std::vector&lt;<span class="keyword">char</span>&gt; <span class="title">source</span><span class="params">(std::istream_iterator&lt;<span class="keyword">char</span>&gt;&#123;fin &gt;&gt; std::noskipws&#125;, &#123;&#125;)</span></span>;  <span class="comment">// &#123;&#x27;u&#x27;, &#x27;8&#x27;, &#x27; &#x27;, &#x27;=&#x27;, &#x27; &#x27;, &#x27;3&#x27;, &#x27;\n&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
 
 <p>or you’re writing an emulator and need to keep the game binary. <a href="https://en.cppreference.com/w/cpp/iterator/istreambuf_iterator"><code>istreambuf_iterator</code></a> can be used:</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">std::vector&lt;<span class="keyword">char</span>&gt; <span class="title">rom</span><span class="params">(std::istreambuf_iterator&lt;<span class="keyword">char</span>&gt;(fin), &#123;&#125;)</span></span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">std::vector&lt;<span class="keyword">char</span>&gt; <span class="title">rom</span><span class="params">(std::istreambuf_iterator&lt;<span class="keyword">char</span>&gt;&#123;fin&#125;, &#123;&#125;)</span></span>;</span><br></pre></td></tr></table></figure>
 
 <p>Built-in arrays are decay into pointers and can be used as an iterator:</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> fibo[] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>&#125;;</span><br><span class="line"><span class="function">std::vector&lt;<span class="keyword">int</span>&gt; <span class="title">fibo_vec</span><span class="params">(fibo, fibo + std::size(fibo))</span></span>;</span><br></pre></td></tr></table></figure>
