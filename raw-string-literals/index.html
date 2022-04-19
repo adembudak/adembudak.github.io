@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="If a string needs to include lots of escape sequences, raw string literals can be used.  Instead of: const std::string help &#x3D;    &quot;\n  Usage: wc [OPTIONS]\n\n&quot;    &quot;  Options:\n&quot;">
+    <meta name="description" content="If a string needs to include lots of escape sequences, raw string literals can be used.  This: const std::string help &#x3D;    &quot;\n  Usage: wc [OPTIONS]\n\n&quot;    &quot;  Options:\n&quot;    &quot;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Raw string literals">
 <meta property="og:url" content="https://adembudak.github.io/raw-string-literals/">
 <meta property="og:site_name">
-<meta property="og:description" content="If a string needs to include lots of escape sequences, raw string literals can be used.  Instead of: const std::string help &#x3D;    &quot;\n  Usage: wc [OPTIONS]\n\n&quot;    &quot;  Options:\n&quot;">
+<meta property="og:description" content="If a string needs to include lots of escape sequences, raw string literals can be used.  This: const std::string help &#x3D;    &quot;\n  Usage: wc [OPTIONS]\n\n&quot;    &quot;  Options:\n&quot;    &quot;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-02-18T23:55:30.000Z">
-<meta property="article:modified_time" content="2022-02-19T11:32:30.000Z">
+<meta property="article:modified_time" content="2022-04-19T21:01:17.590Z">
 <meta property="article:tag" content="C++11">
 <meta name="twitter:card" content="summary">
     
@@ -152,9 +152,9 @@
 
   <div class="content" itemprop="articleBody">
     <p>If a string needs to include lots of escape sequences, raw string literals can be used. </p>
-<p>Instead of:</p>
+<p>This:</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> std::string help =</span><br><span class="line">    <span class="string">&quot;\n  Usage: wc [OPTIONS]\n\n&quot;</span></span><br><span class="line">    <span class="string">&quot;  Options:\n&quot;</span></span><br><span class="line">    <span class="string">&quot;    -h,--help                   Print this help message and exit\n&quot;</span>;</span><br></pre></td></tr></table></figure>
-<p>this:</p>
+<p>can also be written as:</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> std::string help = <span class="string">R&quot;(</span></span><br><span class="line"><span class="string">  Usage: wc [OPTIONS]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  Options:</span></span><br><span class="line"><span class="string">    -h,--help                   Print this help message and exit</span></span><br><span class="line"><span class="string">  )&quot;</span>;</span><br></pre></td></tr></table></figure>
 
 <p>More on:<br><a href="https://docs.microsoft.com/en-us/cpp/cpp/string-and-character-literals-cpp?view=msvc-170#raw-string-literals-c11">https://docs.microsoft.com/en-us/cpp/cpp/string-and-character-literals-cpp?view=msvc-170#raw-string-literals-c11</a></p>
