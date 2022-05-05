@@ -14,7 +14,7 @@
 <meta property="og:description" content="There are several ways to construct a std::vector. One of them is by passing 2 input iterators on it: template &lt;class InputIt&gt;constexpr vector(InputIt first, InputIt last, const Allocator &amp;a">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-18T13:13:40.000Z">
-<meta property="article:modified_time" content="2022-04-19T18:20:32.033Z">
+<meta property="article:modified_time" content="2022-05-02T19:24:39.383Z">
 <meta name="twitter:card" content="summary">
     
     
@@ -149,7 +149,7 @@
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">InputIt</span>&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">constexpr</span> <span class="title">vector</span><span class="params">(InputIt first, InputIt last, <span class="keyword">const</span> Allocator &amp;alloc = Allocator())</span></span>; <span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="keyword">class</span> <span class="title">tokenType</span> &#123;</span> <span class="comment">/* ... */</span> &#125;;</span><br><span class="line"></span><br><span class="line">std::map&lt;std::string, tokenType&gt; keywords &#123;</span><br><span class="line">    &#123;<span class="string">&quot;else&quot;</span>, tokenType::ELSE&#125;, </span><br><span class="line">    &#123;<span class="string">&quot;if&quot;</span>, tokenType::IF&#125;, </span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">std::vector&lt;std::pair&lt;std::string, tokenType&gt;&gt; <span class="built_in">kv</span>(keywords.<span class="built_in">begin</span>(), keywords.<span class="built_in">end</span>());</span><br></pre></td></tr></table></figure>
-<p><a href="https://en.cppreference.com/w/cpp/language/class_template_argument_deduction">CTAD</a> allows us to drop type parameter with C++17 and onward:</p>
+<p><a href="https://en.cppreference.com/w/cpp/language/class_template_argument_deduction">CTAD</a> allows us to drop type parameters with C++17 and onward:</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">std::vector <span class="title">kv</span><span class="params">(keywords.begin(), keywords.end())</span></span>;</span><br></pre></td></tr></table></figure>
 
 <p>Another use case is reading from a file:</p>
