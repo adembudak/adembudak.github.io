@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="View-only types are kind of const variables, but more relaxed way. Once constructed, their value can’t be changed but they provide useful bits over the data they hold. Here is such a type I write when">
+<meta property="og:type" content="article">
+<meta property="og:title" content="view-only types">
+<meta property="og:url" content="https://adembudak.github.io/view-only-types/">
+<meta property="og:site_name">
+<meta property="og:description" content="View-only types are kind of const variables, but more relaxed way. Once constructed, their value can’t be changed but they provide useful bits over the data they hold. Here is such a type I write when">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-05-25T09:55:30.000Z">
+<meta property="article:modified_time" content="2022-05-25T13:07:54.919Z">
+<meta property="article:tag" content="c++">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>view-only types</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/true" title="" type="application/atom+xml" />
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="http://github.com/adembudak/">Github</a></li><!--
+     --><!--
+       --><li><a href="https://stackoverflow.com/users/17359942/">Stack Overflow</a></li><!--
+     --><!--
+       --><li><a href="https://twitter.com/adembudak_/">Twitter</a></li><!--
+     --><!--
+       --><li><a href="https://www.linkedin.com/in/ademb/">Linkedin</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/const-initialization/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://adembudak.github.io/view-only-types/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://adembudak.github.io/view-only-types/&text=view-only types"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://adembudak.github.io/view-only-types/&title=view-only types"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://adembudak.github.io/view-only-types/&is_video=false&description=view-only types"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=view-only types&body=Check out this article: https://adembudak.github.io/view-only-types/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://adembudak.github.io/view-only-types/&title=view-only types"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://adembudak.github.io/view-only-types/&title=view-only types"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://adembudak.github.io/view-only-types/&title=view-only types"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://adembudak.github.io/view-only-types/&title=view-only types"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://adembudak.github.io/view-only-types/&name=view-only types&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://adembudak.github.io/view-only-types/&t=view-only types"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        view-only types
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name"></span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-05-25T09:55:30.000Z" itemprop="datePublished">25/5/22</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/c/" rel="tag">c++</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>View-only types are kind of <code>const</code> variables, but more relaxed way. Once constructed, their value can’t be changed but they provide useful bits over the data they hold.</p>
+<p>Here is such a type I write when implementing an interpreter for the Lox language, from the <a href="https://craftinginterpreters.com/">Crafting Interpreters</a>:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ASTPrinter</span> :</span> <span class="keyword">public</span> boost::static_visitor&lt;std::string&gt; &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">  std::vector&lt;Stmt&gt; m_statements&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="built_in">ASTPrinter</span>() = <span class="keyword">default</span>;</span><br><span class="line">  <span class="function"><span class="keyword">explicit</span> <span class="title">ASTPrinter</span><span class="params">(<span class="keyword">const</span> std::vector&lt;Stmt&gt; &amp;statements)</span></span></span><br><span class="line"><span class="function">      : m_statements(statements) &#123;</span>&#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(std::ostream &amp;os)</span> <span class="keyword">const</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">  <span class="function">std::string <span class="title">visit</span><span class="params">(<span class="keyword">const</span> Stmt &amp;stmt)</span> <span class="keyword">const</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="function">std::string <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> BlockStmt &amp;stmt)</span> <span class="keyword">const</span></span>;</span><br><span class="line">  <span class="function">std::string <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> ClassStmt &amp;stmt)</span> <span class="keyword">const</span></span>;</span><br><span class="line">  <span class="function">std::string <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> ExpressionStmt &amp;stmt)</span> <span class="keyword">const</span></span>;</span><br><span class="line">  <span class="function">std::string <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> FunctionStmt &amp;stmt)</span> <span class="keyword">const</span></span>;</span><br><span class="line">  <span class="function">std::string <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> IfStmt &amp;stmt)</span> <span class="keyword">const</span></span>;</span><br><span class="line">  <span class="function">std::string <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> PrintStmt &amp;stmt)</span> <span class="keyword">const</span></span>;</span><br><span class="line">  <span class="function">std::string <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> ReturnStmt &amp;stmt)</span> <span class="keyword">const</span></span>;</span><br><span class="line">  <span class="function">std::string <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> VariableStmt &amp;stmt)</span> <span class="keyword">const</span></span>;</span><br><span class="line">  <span class="function">std::string <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> WhileStmt &amp;stmt)</span> <span class="keyword">const</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="function">std::string <span class="title">visit</span><span class="params">(<span class="keyword">const</span> Expr &amp;expr)</span> <span class="keyword">const</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="function">std::string <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> AssignExpr &amp;expr)</span> <span class="keyword">const</span></span>;</span><br><span class="line">  <span class="function">std::string <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> BinaryExpr &amp;expr)</span> <span class="keyword">const</span></span>;</span><br><span class="line">  <span class="function">std::string <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> CallExpr &amp;expr)</span> <span class="keyword">const</span></span>;</span><br><span class="line">  <span class="function">std::string <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> GetExpr &amp;expr)</span> <span class="keyword">const</span></span>;</span><br><span class="line">  <span class="function">std::string <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> GroupingExpr &amp;expr)</span> <span class="keyword">const</span></span>;</span><br><span class="line">  <span class="function">std::string <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> LiteralExpr &amp;expr)</span> <span class="keyword">const</span></span>;</span><br><span class="line">  <span class="function">std::string <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> LogicalExpr &amp;expr)</span> <span class="keyword">const</span></span>;</span><br><span class="line">  <span class="function">std::string <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> SetExpr &amp;expr)</span> <span class="keyword">const</span></span>;</span><br><span class="line">  <span class="function">std::string <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> SuperExpr &amp;expr)</span> <span class="keyword">const</span></span>;</span><br><span class="line">  <span class="function">std::string <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> ThisExpr &amp;expr)</span> <span class="keyword">const</span></span>;</span><br><span class="line">  <span class="function">std::string <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> UnaryExpr &amp;expr)</span> <span class="keyword">const</span></span>;</span><br><span class="line">  <span class="function">std::string <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> VariableExpr &amp;expr)</span> <span class="keyword">const</span></span>;</span><br><span class="line">  <span class="function">std::string <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> <span class="keyword">auto</span> &amp; <span class="comment">/*unused*/</span>)</span> <span class="keyword">const</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>Stmt</code> is a polymorphic type created by <a href="https://www.boost.org/doc/libs/1_79_0/doc/html/variant.html">Boost.Variant</a>. An array of statements are given when constructed and only a const member function <em><code>print</code></em> exposed:</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ASTPrinter::print</span><span class="params">(std::ostream &amp;os)</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;stmt : m_statements)</span><br><span class="line">    os &lt;&lt; <span class="built_in">visit</span>(stmt);</span><br><span class="line">  os &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Visits are recursively applied:</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">std::string <span class="title">ASTPrinter::visit</span><span class="params">(<span class="keyword">const</span> Stmt &amp;stmt)</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> boost::<span class="built_in">apply_visitor</span>(*<span class="keyword">this</span>, stmt);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">std::string <span class="title">ASTPrinter::visit</span><span class="params">(<span class="keyword">const</span> Expr &amp;expr)</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> boost::<span class="built_in">apply_visitor</span>(*<span class="keyword">this</span>, expr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>For example, when recursion hits a <code>ReturnStmt</code>, it does this:</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">std::string <span class="title">ASTPrinter::operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> ReturnStmt &amp;stmt)</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (stmt.value.<span class="built_in">which</span>() == <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;(return)&quot;</span>;</span><br><span class="line"></span><br><span class="line">  std::ostringstream sout;</span><br><span class="line">  sout &lt;&lt; <span class="string">&#x27;(&#x27;</span>;</span><br><span class="line">  sout &lt;&lt; <span class="string">&quot;return &quot;</span> &lt;&lt; <span class="built_in">visit</span>(stmt.value);</span><br><span class="line">  sout &lt;&lt; <span class="string">&#x27;)&#x27;</span>;</span><br><span class="line">  <span class="keyword">return</span> sout.<span class="built_in">str</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The thing is, none of the member functions change the state of the object, they just walk through <em><code>m_statements</code></em>, hence they are marked by <code>const</code>. </p>
+<p>View-only types available since the C++98, C++17 adds <a href="https://en.cppreference.com/w/cpp/header/string_view"><code>std::string_view</code></a>, and C++20 adds <a href="https://en.cppreference.com/w/cpp/header/span"><code>std::span</code></a>. Thanks for reading :)</p>
+<hr>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="http://github.com/adembudak/">Github</a></li>
+         
+          <li><a href="https://stackoverflow.com/users/17359942/">Stack Overflow</a></li>
+         
+          <li><a href="https://twitter.com/adembudak_/">Twitter</a></li>
+         
+          <li><a href="https://www.linkedin.com/in/ademb/">Linkedin</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://adembudak.github.io/view-only-types/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://adembudak.github.io/view-only-types/&text=view-only types"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://adembudak.github.io/view-only-types/&title=view-only types"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://adembudak.github.io/view-only-types/&is_video=false&description=view-only types"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=view-only types&body=Check out this article: https://adembudak.github.io/view-only-types/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://adembudak.github.io/view-only-types/&title=view-only types"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://adembudak.github.io/view-only-types/&title=view-only types"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://adembudak.github.io/view-only-types/&title=view-only types"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://adembudak.github.io/view-only-types/&title=view-only types"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://adembudak.github.io/view-only-types/&name=view-only types&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://adembudak.github.io/view-only-types/&t=view-only types"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022
+    
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="http://github.com/adembudak/">Github</a></li><!--
+     --><!--
+       --><li><a href="https://stackoverflow.com/users/17359942/">Stack Overflow</a></li><!--
+     --><!--
+       --><li><a href="https://twitter.com/adembudak_/">Twitter</a></li><!--
+     --><!--
+       --><li><a href="https://www.linkedin.com/in/ademb/">Linkedin</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
