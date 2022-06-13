@@ -14,7 +14,7 @@
 <meta property="og:description" content="std::span is a wrapper for build-in arrays. Build-in arrays have their own syntax and semantics. They can’t be directly assigned one another, can’t pass to or return from a function. std::span provide">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-02-17T20:20:06.000Z">
-<meta property="article:modified_time" content="2022-05-21T21:34:52.539Z">
+<meta property="article:modified_time" content="2022-06-12T22:44:58.491Z">
 <meta property="article:tag" content="c++">
 <meta name="twitter:card" content="summary">
     
@@ -150,9 +150,9 @@
     <p><a href="https://en.cppreference.com/w/cpp/container/span"><code>std::span</code></a> is a wrapper for build-in arrays. Build-in arrays have their own syntax and semantics. They can’t be directly assigned one another, can’t pass to or return from a function.</p>
 <p><code>std::span</code> provides range abstraction and class semantics to them, so they’ll behave just like any other std container. This especially useful when we need to pass a build-in array to a function. </p>
 <p>Instead of:</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">processBuffer</span><span class="params">(<span class="keyword">const</span> uint8 *data, <span class="keyword">const</span> std::<span class="keyword">size_t</span> size)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">uint8_t</span> data[]&#123;<span class="comment">/*...*/</span>&#125;;</span><br><span class="line"><span class="built_in">processBuffer</span>(data, std::<span class="built_in">size</span>(data));</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">processBuffer</span><span class="params">(<span class="keyword">const</span> std::<span class="keyword">uint8_t</span> *data, <span class="keyword">const</span> std::<span class="keyword">size_t</span> size)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">std::<span class="keyword">uint8_t</span> data[]&#123;<span class="comment">/*...*/</span>&#125;;</span><br><span class="line"><span class="built_in">processBuffer</span>(data, std::<span class="built_in">size</span>(data));</span><br></pre></td></tr></table></figure>
 <p>we can write:</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">processBuffer</span><span class="params">(<span class="keyword">const</span> std::span&lt;<span class="keyword">uint8_t</span>&gt; buffer)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">processBuffer</span>(data);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">processBuffer</span><span class="params">(<span class="keyword">const</span> std::span&lt;std::<span class="keyword">uint8_t</span>&gt; buffer)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">processBuffer</span>(data);</span><br></pre></td></tr></table></figure>
 <p><code>std::span</code>is C++20 addition but there exist backports even for C++98!</p>
 <p>More on (in lexicographical order):</p>
 <ul>
