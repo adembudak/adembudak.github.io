@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="A type is regular if it has following properties: 1- default constructible2- copyable&#x2F;movable3- destructible4- equality comparable std::string is a regular type: std::string a;std::string b &#x3D; a; &#x2F;&#x2F; a">
+    <meta name="description" content="A type is regular if it has following properties: 1- default constructible2- copyable&#x2F;movable3- destructible4- equality comparable std::string is a regular type: std::string a;std::string b &#x3D; a;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="regular types">
 <meta property="og:url" content="https://adembudak.github.io/regulartypes/">
 <meta property="og:site_name">
-<meta property="og:description" content="A type is regular if it has following properties: 1- default constructible2- copyable&#x2F;movable3- destructible4- equality comparable std::string is a regular type: std::string a;std::string b &#x3D; a; &#x2F;&#x2F; a">
+<meta property="og:description" content="A type is regular if it has following properties: 1- default constructible2- copyable&#x2F;movable3- destructible4- equality comparable std::string is a regular type: std::string a;std::string b &#x3D; a;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-03-20T16:51:43.000Z">
 <meta property="article:modified_time" content="2022-05-21T21:34:52.531Z">
@@ -148,7 +148,7 @@
 
   <div class="content" itemprop="articleBody">
     <p>A type is regular if it has following properties:</p>
-<p>1- default constructible<br>2- copyable/movable<br>3- destructible<br>4- equality comparable</p>
+<p>1- default constructible<br>2- copyable&#x2F;movable<br>3- destructible<br>4- equality comparable</p>
 <p><code>std::string</code> is a regular type:</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::string a;</span><br><span class="line">std::string b = a; <span class="comment">// a and b are distinct copies, changes in a doesn&#x27;t effect b</span></span><br><span class="line">std::string c = std::<span class="built_in">move</span>(a);</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  std::string b;</span><br><span class="line">&#125; <span class="comment">// b destructed</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> comp = a == b;</span><br></pre></td></tr></table></figure>
 <p><code>std::thread</code> is not because it’s designed to be not copyable.</p>
